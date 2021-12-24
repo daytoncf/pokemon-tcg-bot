@@ -1,4 +1,18 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
+const axios = require('axios');
+
+// Get tcg api token from .env file in parent directory
+require('dotenv').config( { path: '../.env'} );
+const axInstance = axios.create({
+    baseURL: 'https://api.pokemontcg.io/v2/cards/',
+    timeout: 1500,
+    headers: { 'X-Api-Key': process.env.TCG_KEY }
+});
+
+async function getCardData(card) {
+    const response = await axInstance.get(card);
+    return response.data;
+}
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -10,7 +24,9 @@ module.exports = {
                 .setRequired(true)),
     async execute(interaction) {
         const id = interaction.options.getString('card-id');
-        
-        await interaction.reply(`Your tag: ${interaction.user.tag}\nYour id: ${interaction.user.id}`);
+        let cardObject = await getCardData(id);
+        console.log(cardObject);
+        console.log(id);
+        await interaction.reply(cardObject.data.images.large);
     },
 };
