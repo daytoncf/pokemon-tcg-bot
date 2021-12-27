@@ -1,7 +1,11 @@
+require('dotenv').config();
+
 const fs = require('fs');
 const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord-api-types/v9');
-const { clientID, guildID, token } = require('./config.json');
+const clientID = process.env.CLIENT_ID.toString();
+const guildID = process.env.GUILD_ID.toString();
+const token = process.env.DISCORD_TOKEN;
 
 const commands = [];
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
