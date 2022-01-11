@@ -9,7 +9,8 @@ My friends and I became somewhat avid pokemon card collectors and I wanted to bu
 # Commands
 More commands are to be added such as `/get-value`, `/get-stats`, and even querying capabilities with `/search-card`!
 
-Currently the only functional command is `/get-card` EX: `/get-card card-id:swsh1-1`
+Currently the only functional command is `/get-card` 
+EXAMPLE: `/get-card card-id:swsh1-1`
 
 # Screenshots
 ![poke-card-bot](https://user-images.githubusercontent.com/20017251/149025638-f83d4713-656e-4322-97de-ca576a42a017.JPG)
